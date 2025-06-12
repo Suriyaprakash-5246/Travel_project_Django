@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Travel Website</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="navbar">
+      <div class="logo-box">
+        <img src="img/logo_travel.webp" alt="Logo" />
+      </div>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="service.html">Services</a></li>
+        <li><a href="journey.html">Journeys</a></li>
+        <li><a href="attraction.html">Attractions</a></li>
+        <li><a href="hotels.html">Hotels</a></li>
+        <li><a href="contact.html">Contact Us</a></li>
+        <li><a href="personal.html">Book Now</a></li>
+      </ul>
+    </div>
+    <!-- Logo -->
+
+    <div id="home" class="section">
+      
+      <video autoplay muted loop id="homeVideo">
+        <source src="video/travel.mp4" type="video/mp4" />
+      </video>
+      <div class="home-content overlay-content">
+        <h1>Welcome to Explore the World</h1>
+        <p>
+          Your adventure begins here! Discover breathtaking destinations,
+          immerse yourself in diverse cultures, and embark on unforgettable
+          journeys. Whether you're looking for a relaxing getaway or an
+          action-packed adventure, we have something for everyone.
+        </p>
+        <p>
+          Browse through our curated selection of travel packages and plan your
+          next trip with ease. From scenic landscapes to bustling cities, our
+          travel guides and tips will help you make the most of your experience.
+          Join us on a journey to explore the world like never before!
+          </p>
+          <div class="book-now button">
+            <a href="home_page.html"><button>Book Now</button></a>
+          </div>
+        </p>
+      </div>
+      <div class="overlay">
+        
+        <button onclick="openSignUpForm()">Sign Up</button>
+        <button onclick="login()">Login</button>
+        
+      </div>
+    </div>
+    <div id="signUpForm" class="modal">
+      <div class="modal-content">
+        <span class="close" onclick="closeSignUpForm()">&times;</span>
+        <h2>Sign Up</h2>
+        <form action="#" method="post">
+          <label for="country">Country:</label>
+          <select id="countryDropdown" onchange="updateCountry()">
+            <option value="">Select your country</option>
+            <option value="Australia">Australia</option>
+            <option value="Brazil">Brazil</option>
+            <option value="Canada">Canada</option>
+            <option value="India">India</option>
+            <!-- More options -->
+          </select>
+          <input type="text" id="country" name="country" required placeholder="Country">
+    
+          <label for="mobile">Mobile Number:</label>
+          <input type="tel" id="mobile" name="mobile" required placeholder="Mobile number">
+    
+          <label for="email">Email Address:</label>
+          <input type="email" id="email" name="email" required placeholder="Email-Address">
+    
+          <button type="submit">Submit</button>
+        </form>
+      </div>
+    </div>
+    
+    <link rel="stylesheet" href="travel.css" />
+    <script src="travel.js"></script>
+  </body>
+  style
+</html>
