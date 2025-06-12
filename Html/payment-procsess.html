@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment Process</title>
+    <link rel="stylesheet" href="common.css">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            color: #333;
+        }
+
+        /* Video background styling */
+        .video-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
+        }
+
+        /* Content styling */
+        .container {
+            max-width: 900px;
+            margin: 50px auto;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.85);
+            border-radius: 12px;
+            box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            font-size: 2rem;
+            color: #0056b3;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #6c757d;
+            font-size: 1rem;
+            margin-bottom: 30px;
+        }
+
+        .travel-summary {
+            background: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            margin-bottom: 30px;
+        }
+
+        .travel-summary h3 {
+            color: #333;
+            margin-bottom: 15px;
+            text-align: center;
+            font-size: 1.5rem;
+        }
+
+        .travel-summary p {
+            margin: 5px 0;
+            font-size: 1rem;
+            color: #555;
+        }
+
+        .form-section {
+            margin-bottom: 20px;
+        }
+
+        .form-section h4 {
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+            color: #0056b3;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            margin-bottom: 5px;
+            font-size: 1rem;
+            color: #555;
+        }
+
+        .form-group input,
+        .form-group select {
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 1rem;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus {
+            border-color: #0056b3;
+            outline: none;
+            box-shadow: 0px 0px 8px rgba(0, 86, 179, 0.3);
+        }
+
+        .btn-primary {
+            padding: 15px;
+            background-color: #0056b3;
+            color: #ffffff;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            text-align: center;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        .btn-primary:hover {
+            background-color: #003d80;
+            transform: translateY(-2px);
+        }
+
+        .btn-primary:active {
+            transform: translateY(0);
+        }
+
+        .payment-options {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        #credit-card-fields,
+        #upi-fields,
+        #wallets-fields,
+        #bank-list {
+            display: none;
+        }
+    </style>
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Payment Process</title>
+        <script>
+            document.addEventListener("DOMContentLoaded", () => {
+                const travelData = JSON.parse(localStorage.getItem("travelData"));
+                const summaryContainer = document.getElementById("travel-summary");
+    
+                if (travelData) {
+                    summaryContainer.innerHTML = `
+                        <h3>Travel Summary</h3>
+                        <p><i class="fas fa-user"></i><strong>Name:</strong> ${travelData.name}</p>
+                        <p><i class="fas fa-flag"></i><strong>Country:</strong> ${travelData.country}</p>
+                        <p><i class="fas fa-phone"></i><strong>Phone Number:</strong> ${travelData.phone}</p>
+                        <p><i class="fas fa-bus"></i><strong>Mode of Transportation:</strong> ${travelData.transportation}</p>
+                        <p><i class="fas fa-calendar-alt"></i><strong>Travel Date:</strong> ${travelData.date}</p>
+                        <p><i class="fas fa-map-marker-alt"></i><strong>Destination:</strong> ${travelData.destination}</p>
+                        <p><i class="fas fa-wheelchair"></i><strong>Disabled:</strong> ${travelData.disabled}</p>
+                    `;
+                }
+            });
+    
+            function togglePaymentFields(selectedMethod) {
+                document.getElementById("credit-card-fields").style.display = selectedMethod === "credit-card" ? "block" : "none";
+                document.getElementById("upi-fields").style.display = selectedMethod === "upi" ? "block" : "none";
+                document.getElementById("wallets-fields").style.display = selectedMethod === "wallets" ? "block" : "none";
+                document.getElementById("bank-list").style.display = selectedMethod === "net-banking" ? "block" : "none";
+            }
+    
+            function processPayment() {
+                alert("Your payment was successful! Redirecting to guide information.");
+                window.location.href = "contact-guide.html";
+            }
+        </script>
+    </head>
+    <body>
+        <!-- Background Video -->
+        <video class="video-background" autoplay muted loop>
+            <source src="video/travel.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    
+        <div class="container">
+            <h1>Payment Process</h1>
+            <p class="subtitle">Finalize your booking with a secure payment.</p>
+    
+            <div id="travel-summary" class="travel-summary">
+                <!-- Travel summary dynamically inserted here -->
+            </div>
+    
+            <form onsubmit="event.preventDefault(); processPayment();" class="form-card">
+                <!-- Payment Options -->
+                <div class="form-section">
+                    <h4>Choose a Payment Method</h4>
+                    <div class="payment-options">
+                        <label><input type="radio" name="payment-method" value="credit-card" checked onclick="togglePaymentFields('credit-card')"> Credit/Debit Card</label>
+                        <label><input type="radio" name="payment-method" value="upi" onclick="togglePaymentFields('upi')"> UPI</label>
+                        <label><input type="radio" name="payment-method" value="wallets" onclick="togglePaymentFields('wallets')"> Wallets</label>
+                        <label><input type="radio" name="payment-method" value="net-banking" onclick="togglePaymentFields('net-banking')"> Net Banking</label>
+                    </div>
+                </div>
+    
+                <!-- Credit/Debit Card Fields -->
+                <div id="credit-card-fields" class="form-group">
+                    <label for="card-number">Card Number</label>
+                    <input type="text" id="card-number" name="card-number" placeholder="Enter your card number" required>
+                    <label for="expiry-date">Expiry Date</label>
+                    <input type="text" id="expiry-date" name="expiry-date" placeholder="MM/YY" required>
+                    <label for="cvv">CVV</label>
+                    <input type="text" id="cvv" name="cvv" placeholder="Enter CVV" required>
+                </div>
+    
+                <!-- UPI Fields -->
+                <div id="upi-fields" class="form-group">
+                    <label for="upi-id">UPI ID</label>
+                    <input type="text" id="upi-id" name="upi-id" placeholder="Enter your UPI ID (e.g., user@upi)">
+                </div>
+    
+                <!-- Wallets Fields -->
+                <div id="wallets-fields" class="form-group">
+                    <label for="wallets">Choose Wallet</label>
+                    <select id="wallets" name="wallets">
+                        <option value="paytm">Paytm</option>
+                        <option value="phonepe">PhonePe</option>
+                        <option value="amazonpay">Amazon Pay</option>
+                        <option value="mobikwik">MobiKwik</option>
+                    </select>
+                </div>
+    
+                <!-- Net Banking -->
+                <div id="bank-list" class="form-group">
+                    <label for="banks">Select Your Bank</label>
+                    <select id="banks" name="banks">
+                        <option value="sbi">State Bank of India</option>
+                        <option value="hdfc">HDFC Bank</option>
+                        <option value="icici">ICICI Bank</option>
+                        <option value="axis">Axis Bank</option>
+                        <option value="pnb">Punjab National Bank</option>
+                    </select>
+                </div>
+    
+                <button type="submit" class="btn-primary">Next Page</button>
+            </form>
+        </div>
+    </body>
+    </html>
+    
