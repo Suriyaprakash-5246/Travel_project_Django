@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personal Information</title>
+    <link rel="stylesheet" href="common.css">
+    <script>
+        function saveFormData() {
+            const name = document.getElementById("name").value;
+            const country = document.getElementById("country").value;
+            const phone = document.getElementById("phone").value;
+            const transportation = document.getElementById("transportation").value;
+            const date = document.getElementById("date").value;
+            const disabled = document.querySelector('input[name="disabled"]:checked').value;
+            const destination = document.getElementById("destination").value;
+
+            // Save data to localStorage
+            localStorage.setItem("travelData", JSON.stringify({
+                name,
+                country,
+                phone,
+                transportation,
+                date,
+                disabled,
+                destination,
+            }));
+
+            // Redirect to the payment process page
+            window.location.href = "payment-process.html";
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h1>Plan Your Trip</h1>
+        <p class="subtitle">Fill in your details to proceed.</p>
+        <form onsubmit="event.preventDefault(); saveFormData();" class="form-card">
+            <!-- Form Fields -->
+            <div class="form-group">
+                <label for="name">Full Name</label>
+                <input type="text" id="name" name="name" placeholder="Enter your full name" required>
+            </div>
+            <div class="form-group">
+                <label for="country">Country</label>
+                <input type="text" id="country" name="country" placeholder="Enter your country" required>
+            </div>
+            <div class="form-group">
+                <label for="phone">Phone Number</label>
+                <input type="tel" id="phone" name="phone" placeholder="Enter your phone number" required>
+            </div>
+            <div class="form-group">
+                <label for="transportation">Mode of Transportation</label>
+                <select id="transportation" name="transportation" required>
+                    <option value="" disabled selected>Select an option</option>
+                    <option value="flight">Flight</option>
+                    <option value="train">Train</option>
+                    <option value="bus">Bus</option>
+                    <option value="car">Car</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="date">Travel Date</label>
+                <input type="date" id="date" name="date" required>
+            </div>
+            <div class="form-group">
+                <label for="destination">Destination</label>
+                <select id="destination" name="destination" required>
+                    <option value="" disabled selected>Select a destination</option>
+                    <option value="Kerala">Kerala</option>
+                    <option value="Tamil Nadu">Tamil Nadu</option>
+                    <option value="Punjab">Punjab</option>
+                    <option value="Rajasthan">Rajasthan</option>
+                    <option value="Karnataka">Karnataka</option>
+                    <option value="Andhra Pradesh">Andhra Pradesh</option>
+                    <option value="Ladakh">Ladakh</option>
+                    <option value="Mumbai">Mumbai</option>
+                    <option value="Assam">Assam</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>Are you disabled?</label>
+                <div class="radio-group">
+                    <label><input type="radio" name="disabled" value="yes"> Yes</label>
+                    <label><input type="radio" name="disabled" value="no" checked> No</label>
+                </div>
+            </div>
+            <button type="submit" class="btn-primary">Confirm</button>
+        </form>
+    </div>
+</body>
+</html>
