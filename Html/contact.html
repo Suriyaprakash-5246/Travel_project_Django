@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+  <div class="navbar">
+    <div class="logo-box">
+      <img src="img/logo_travel.webp" alt="Logo" />
+    </div>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="service.html">Services</a></li>
+      <li><a href="journey.html">Journeys</a></li>
+      <li><a href="attraction.html">Attractions</a></li>
+      <li><a href="hotels.html">Hotels</a></li>
+      <li><a href="contact.html">Contact Us</a></li>
+      <li><a href="personal.html">Book Now</a></li>
+    </ul>
+  </div>
+      <!--Contact Us and Our Location-->
+<div id="contact-location" class="section">
+    <!-- Contact Us Section -->
+    <div id="contact-us" class="contact-section">
+      <h2>Contact Us</h2>
+      <form action="submit_form.php" method="post">
+        <div class="form-group">
+          <label for="name">Name:</label>
+          <input type="text" id="name" name="name" placeholder="Enter your name" required>
+        </div>
+        <div class="form-group">
+          <label for="email">Email:</label>
+          <input type="email" id="email" name="email" placeholder="Enter your email" required>
+        </div>
+        <div class="form-group">
+          <label for="message">Message:</label>
+          <textarea id="message" name="message" rows="5" placeholder="Write your message" required></textarea>
+        </div>
+        <button type="submit">Submit</button>
+      </form>
+    </div>
+  
+    <!-- Our Location Section -->
+    <div id="our-location" class="location-section">
+      <h2>Our Location</h2>
+      <div class="map-container">
+        <iframe 
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3153.8354345091463!2d144.9630577153165!3d-37.81410797975159!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6ad642af0f11fd81%3A0xf577a660c8ad18aa!2sMelbourne%2C%20Australia!5e0!3m2!1sen!2sus!4v1634891893823!5m2!1sen!2sus" 
+          width="100%" 
+          height="400" 
+          style="border:0;" 
+          allowfullscreen="" 
+          loading="lazy">
+        </iframe>
+      </div>
+      <p>Address: 123 Main Street, Melbourne, Australia</p>
+      <p>Phone: +61 123 456 789</p>
+      <p>Email: info@example.com</p>
+    </div>
+  </div>
+<link rel="stylesheet" href="contact.css">
+<script src="travel.js"></script>  
+</body>
+</html>
