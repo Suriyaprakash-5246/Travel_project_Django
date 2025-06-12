@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hotels</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<div>
+  <div class="navbar">
+    <div class="logo-box">
+      <img src="img/logo_travel.webp" alt="Logo" />
+    </div>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="service.html">Services</a></li>
+      <li><a href="journey.html">Journeys</a></li>
+      <li><a href="attraction.html">Attractions</a></li>
+      <li><a href="hotels.html">Hotels</a></li>
+      <li><a href="contact.html">Contact Us</a></li>
+      <li><a href="#review us">Review Us</a></li>
+    </ul>
+  </div>
+  
+
+  <div id="hotels" class="section">
+    <h1>Find Your Perfect Hotel</h1>
+    <div class="selection-bar">
+      <label for="hotels">Choose a destination:</label>
+      <select id="hotels-dropdown" onchange="displayHotel()">
+        <option value="">Select a place</option>
+        <option value="Kerala">Kerala</option>
+        <option value="Tamil Nadu">Tamil Nadu</option>
+        <option value="Punjab">Punjab</option>
+        <option value="Rajasthan">Rajasthan</option>
+        <option value="Karnataka">Karnataka</option>
+        <option value="Andhra Pradesh">Andhra Pradesh</option>
+      </select>
+    </div>
+
+    <div id="hotel-details" class="hotel-details">
+      <!-- Details of the selected hotel will be displayed here -->
+    </div>
+  </div>
+
+
+  <script>
+    const hotels = {
+      "Kerala": [
+        { "name": "Taj Green Cove Resort & Spa", "description": "Luxury amidst serene backwaters and lush greenery.", "image": "img/tajgreencove.webp" },
+        { "name": "Kumarakom Lake Resort", "description": "Exclusive villas beside the tranquil Vembanad Lake.", "image": "img/kumarakomlake.jpg" },
+        { "name": "Leela Kovalam", "description": "Clifftop views, premium luxury, and pristine beaches.", "image": "img/leela.jpg" },
+        { "name": "Brunton Boatyard", "description": "Heritage charm overlooking the historic Kochi harbor.", "image": "img/bruntonboatyard.jpg" },
+         
+      ],
+      "Tamil Nadu": [
+        { "name": "Taj Coromandel", "description": "Iconic luxury hotel in the heart city.", "image": "img/tajcoromandel.jpg" },
+        { "name": "Heritage Madurai", "description": "Elegant architecture blending history with modern comfort.", "image": "img/heritagemadurai.jpg" },
+        { "name": "Svatma", "description": "Boutique hotel celebrating Tamil culture and tradition.", "image": "img/svatma.jpg" },
+        { "name": "The Tamara", "description": "Luxury nestled in misty hills and nature.", "image": "img/thetamaratamilnadu.jpg" },
+        
+      ],
+      "Punjab": [
+        { "name": "Hyatt Regency", "description": "Modern luxury near the iconic Golden Temple.", "image": "img/hyattregency.jpg" },
+        { "name": "Radisson Blu Hotel", "description": "Premium accommodation with world-class amenities offered.", "image": "img/radissonblu.avif" },
+        { "name": "The Oberoi Sukhvilas Resort & Spa", "description": "Palatial luxury set amidst tranquil Shivaliks.", "image": "img/oberoisukhvilas.jpg" },
+        { "name": "Best Western", "description": "Classic hospitality in Punjab's royal city.", "image": "img/bestwestern.jpg" }
+      ],
+      "Rajasthan": [
+        { "name": "Umaid Bhawan Palace", "description": "Opulent heritage palace offering unparalleled royal experience.", "image": "img/umaidbhawanpalace.webp" },
+        { "name": "Taj Lake Palace", "description": "Floating palace surrounded by serene Lake Pichola.", "image": "img/tajlakepalace.jpg" },
+        { "name": "The Leela Palace", "description": "Heritage luxury blending grandeur and modern elegance.", "image": "img/theleelapalace.jpg" },
+        { "name": "Samode Haveli", "description": "Quaint haveli offering authentic Rajasthani royal hospitality.", "image": "img/samodehaveli.jpg" }
+      ],
+      "Karnataka": [
+        { "name": "The Ritz-Carlton", "description": "Modern luxury with world-class dining and spa.", "image": "ritzcarlton.jpg" },
+        { "name": "Evolve Back", "description": "Eco-luxury resort amid coffee plantations and hills.", "image": "evolveback.jpg" },
+        { "name": "The Tamara", "description": "Exquisite mountain getaway offering serene hill vistas.", "image": "thetamarakarnataka.jpg" },
+        { "name": "Jungle Lodges Kabini River Lodge", "description": "Rustic luxury with thrilling wildlife safari experiences.", "image": "kabiniriverlodge.jpg" },
+        { "name": "Clarks Exotica Convention Resort", "description": "Lush resort combining leisure, luxury, and tranquility.", "image": "clarksexotica.jpg" }
+      ]
+    };
+
+    function displayHotel() {
+      const place = document.getElementById('hotels-dropdown').value;
+      const hotelDetails = document.getElementById('hotel-details');
+
+      if (place) {
+        let output = '';
+        hotels[place].forEach((hotel) => {
+          output += `
+            <div class="hotel">
+              <div class="hotel-bg" style="background-image: url('${hotel.image}');"></div>
+              <h3>${hotel.name}</h3>
+              <p>${hotel.description}</p>
+            </div>
+          `;
+        });
+        hotelDetails.innerHTML = output;
+      } else {
+        hotelDetails.innerHTML = '';
+      }
+    }
+
+    function displayHotel() {
+      const place = document.getElementById('hotels-dropdown').value;
+      const hotelDetails = document.getElementById('hotel-details');
+    
+      if (place) {
+        let output = '';
+        hotels[place].forEach((hotel) => {
+          output += `
+            <div class="hotel">
+              <div class="hotel-bg" style="background-image: url('${hotel.image}');"></div>
+              <h3>${hotel.name}</h3>
+              <p>${hotel.description}</p>
+            </div>
+          `;
+        });
+        hotelDetails.innerHTML = output;
+      } else {
+        hotelDetails.innerHTML = '<p>Please select a destination to view hotels.</p>';
+      }
+    }
+    
+  </script>
+  <style>
+    body, html {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+      overflow-x: hidden; /* Prevent horizontal scrolling */
+    }
+    
+    .navbar {
+      position: fixed;
+      width: 200px;
+      height: 100%;
+      background-color: #333;
+      z-index: 2;
+      overflow: auto; /* Allow scrolling for the navbar */
+    }
+    
+   
+    
+    .navbar ul {
+      list-style-type: none;
+      padding: 0;
+    }
+    
+    .navbar ul li {
+      padding: 20px;
+    }
+    
+    .navbar ul li a {
+      color: white;
+      text-decoration: none;
+      display: block;
+    }
+    
+    .section {
+      margin-left: 200px;
+      padding: 20px;
+      height: 100vh;
+      overflow: auto;
+      position: relative;
+    }
+    
+    .selection-bar {
+      position: relative;
+      margin-top: 20px;
+      text-align: center;
+      background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent background */
+      padding: 15px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+      width: fit-content; /* Ensure the selection bar fits its content */
+      margin: 0 auto; /* Center the selection bar */
+    }
+    
+    .selection-bar label {
+      font-size: 18px;
+      margin-right: 10px;
+      color: #4CAF50; /* Green text color */
+    }
+    
+    .selection-bar select {
+      padding: 10px;
+      font-size: 16px;
+      border-radius: 5px;
+      border: none; /* Remove border */
+      background-color: #4CAF50; /* Green background for the select box */
+      color: white; /* White text color */
+      cursor: pointer;
+      outline: none;
+    }
+    
+    .hotel-details {
+      margin-top: 50px;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr); /* 2 columns */
+      grid-gap: 20px;
+      transition: opacity 0.5s ease-in-out; /* Transition effect for displaying details */
+    }
+    
+      .hotel {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        background-color: #f9f9f9; /* Light background for hotel cards */
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Card shadow */
+        transition: transform 0.3s ease, box-shadow 0.3s ease; /* Animation for hover */
+      }
+    
+      .hotel:hover {
+        transform: scale(1.05); /* Slight zoom on hover */
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* Deeper shadow on hover */
+      }
+    
+      .hotel-bg {
+        width: 100%;
+        height: 200px;
+        background-size: cover;
+        background-position: center;
+        border-radius: 10px;
+        margin-bottom: 15px;
+      }
+    
+      .hotel h3 {
+        margin: 10px 0;
+        font-size: 20px;
+        color: #333; /* Dark text for titles */
+      }
+    
+      .hotel p {
+        font-size: 16px;
+        color: #666; /* Gray text for descriptions */
+        text-align: center;
+      }
+    
+      .hotel-details {
+        margin-top: 50px;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Responsive layout */
+        grid-gap: 20px;
+        padding: 20px;
+      }
+      h1{
+        color: blue;
+        text-shadow: grey;
+        text-decoration: double;
+      }
+      
+     
+    </style>
+    
+    
+  
+  <link rel="stylesheet" href="travel.css">
+</body>
+</html>
