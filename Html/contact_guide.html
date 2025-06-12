@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Guide</title>
+    <link rel="stylesheet" href="styles.css">
+    <script>
+        // Redirect to thank_you.html
+        function contactGuide() {
+            window.location.href = "thank_you.html";
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h1>Contact Your Guide</h1>
+        <p class="subtitle">Get in touch with your guide for further assistance.</p>
+        <div class="guide-info">
+            <h2>Guide Information</h2>
+            <p><strong>Name:</strong> John Doe</p>
+            <p><strong>Email:</strong> johndoe@example.com</p>
+            <p><strong>Phone:</strong> +1-234-567-890</p>
+            <p><strong>Preferred Contact Method:</strong> Email or Phone</p>
+        </div>
+        <form onsubmit="event.preventDefault(); contactGuide();" class="form-card">
+            <!-- Contact Fields -->
+            <div class="form-group">
+                <label for="contact-method">Preferred Contact Method</label>
+                <select id="contact-method" name="contact-method" required>
+                    <option value="" disabled selected>Select a contact method</option>
+                    <option value="email">Email</option>
+                    <option value="phone">Phone</option>
+                    <option value="video-call">Video Call</option>
+                    <option value="in-person">In Person</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="message">Your Message</label>
+                <textarea id="message" name="message" placeholder="Enter your message to the guide" rows="5" required></textarea>
+            </div>
+            <button type="submit" class="btn-primary">Contact Guide</button>
+        </form>
+        <div class="footer">
+            <p>Thank you for reaching out. We hope you have a wonderful journey!</p>
+            <img src="img/thank-you.png" alt="Thank You">
+        </div>
+    </div>
+<style>
+    body, html {
+        margin: 0;
+        padding: 0;
+        font-family: 'Poppins', sans-serif;
+        background-color: #f0f8ff; /* Light blue background color */
+        overflow-x: hidden; /* Prevent horizontal scrolling */
+    }
+    
+    .container {
+        margin: auto;
+        padding: 20px;
+        max-width: 800px;
+        background-color: #ffffff;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
+        border-radius: 10px; /* Rounded corners for modern look */
+    }
+    
+    h1 {
+        font-size: 36px;
+        color: #333;
+        text-align: center;
+        margin-bottom: 10px;
+        background-color: #4CAF50; /* Light green background for header */
+        color: #fff;
+        padding: 10px;
+        border-radius: 10px;
+        animation: fadeIn 1s ease-in; /* Animation for header */
+    }
+    
+    .subtitle {
+        font-size: 18px;
+        color: #777;
+        text-align: center;
+        margin-bottom: 20px;
+        background-color: #81C784; /* Light green background for subtitle */
+        color: #fff;
+        padding: 10px;
+        border-radius: 10px;
+    }
+    
+    .guide-info {
+        background-color: #e0f7fa; /* Light cyan background for guide info */
+        border-radius: 10px;
+        padding: 20px;
+        margin-bottom: 20px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .guide-info h2 {
+        font-size: 24px;
+        color: #00695c;
+        margin-bottom: 10px;
+    }
+    
+    .guide-info p {
+        font-size: 16px;
+        color: #004d40;
+        margin: 5px 0;
+        animation: fadeInUp 1s ease-in-out; /* Animation for guide info */
+    }
+    
+    .form-card {
+        background-color: #fff;
+        border-radius: 10px;
+        padding: 20px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+    
+    .form-group {
+        margin-bottom: 20px;
+    }
+    
+    label {
+        font-size: 16px;
+        color: #333;
+        margin-bottom: 5px;
+        display: block;
+    }
+    
+    input[type="text"],
+    textarea,
+    select {
+        width: 100%;
+        padding: 10px;
+        font-size: 16px;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+        box-sizing: border-box;
+        margin-bottom: 10px;
+        background-color: #e8f0fe; /* Light blue background for input fields */
+    }
+    
+    textarea {
+        resize: vertical; /* Allow vertical resize for textareas */
+    }
+    
+    .btn-primary {
+        padding: 10px 20px;
+        background-color: #4CAF50;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 18px;
+        width: 100%;
+        text-align: center;
+        transition: background-color 0.3s;
+    }
+    
+    .btn-primary:hover {
+        background-color: #45a049;
+    }
+    
+    .footer {
+        text-align: center;
+        margin-top: 20px;
+    }
+    
+    .footer img {
+        width: 100px;
+        height: auto;
+        display: block;
+        margin: 0 auto;
+        animation: rotateIn 1s ease; /* Animation for image */
+    }
+    
+    /* Keyframe Animations */
+    @keyframes fadeIn {
+        from { opacity: 0; }
+        to { opacity: 1; }
+    }
+    
+    @keyframes fadeInUp {
+        from { opacity: 0; transform: translateY(20px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+    
+    @keyframes rotateIn {
+        from { transform: rotate(-360deg); opacity: 0; }
+        to { transform: rotate(0); opacity: 1; }
+    }
+    
+</style>
+</body>
+</html>
