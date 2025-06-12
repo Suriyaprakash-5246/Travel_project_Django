@@ -1,0 +1,653 @@
+body, html {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  overflow-x: hidden; /* Prevent horizontal scrolling */
+}
+
+.navbar {
+  position: fixed;
+  width: 200px;
+  height: 100%;
+  background-color: #333;
+  z-index: 2;
+  overflow: auto; /* Allow scrolling for the navbar */
+}
+
+.navbar ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.navbar ul li {
+  padding: 20px;
+}
+
+.navbar ul li a {
+  color: white;
+  text-decoration: none;
+  display: block;
+}
+
+.section {
+  margin-left: 200px;
+  padding: 20px;
+  height: 100vh;
+  overflow: auto; /* Allow scrolling within sections */
+  position: relative;
+  
+}
+
+video, .background-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1; /* Ensure background is behind the content */
+}
+
+.home-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+  width: 70%;
+  z-index: 1; /* Ensure content is above the background */
+  animation: fadeIn 1.5s ease-in-out; /* Fade in animation */
+}
+
+.home-content h1 {
+  font-size: 48px;
+  margin-bottom: 20px;
+  animation: slideInFromLeft 1s ease-in-out; /* Slide in animation */
+}
+
+.home-content p {
+  font-size: 18px;
+  margin-bottom: 20px;
+  transition: all 0.5s ease-in-out; /* Transition effect */
+}
+
+.home-content p:hover {
+  color: #ff6b6b;
+}
+@keyframes slideInFromLeft {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+.overlay {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  display: flex;
+  gap: 10px;
+  z-index: 1; /* Ensure buttons are above the background */
+}
+
+.overlay button {
+  padding: 10px 20px;
+  background-color: #ff6b6b;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.overlay button:hover {
+  background-color: #ff4747;
+}
+
+.service-overlay {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+  width: 70%;
+  z-index: 1;
+}
+
+.service-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* Three columns */
+  gap: 20px;
+  text-align: center;
+}
+
+.service {
+  position: relative;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.service img {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 50%;
+  margin-bottom: 10px;
+}
+
+.service h4 {
+  font-size: 20px;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.service p {
+  font-size: 16px;
+  color: #666;
+}
+
+.service:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.service-overlay {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  color: white;
+  padding: 20px;
+  border-radius: 10px;
+  width: 100%;
+}
+
+.background-image {
+  width: 100%;
+  height: 10%;
+  object-fit: cover;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+}
+
+/* Zoom-out effect for Journey images on hover */
+
+
+.journey-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: auto; /* Allow rows to grow based on content */
+  gap: 20px;
+  padding: 20px;
+}
+
+.journey {
+  position: relative;
+}
+
+.journey img {
+  width: 100%;
+  height: 70%;
+  border-radius: 15px;
+}
+
+.journey .overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 70%;
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  transition: opacity 0.3s;
+  border-radius: 15px;
+}
+
+.journey:hover .overlay {
+  opacity: 1;
+}
+
+.attractions-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto; /* Allow rows to grow based on content */
+  gap: 20px;
+  padding: 20px;
+}
+
+.attraction {
+  position: relative;
+  background-color: rgba(255,255,255,0.8);
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3 ease;
+}
+
+.attraction-bg {
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  border-radius: 15px;
+  background: linear-gradient(to right, #ff7e5f, #feb47b);
+}
+
+
+.attraction .overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  transition: opacity 0.3s;
+  border-radius: 15px;
+}
+
+.attraction:hover .overlay {
+  opacity: 1;
+}
+.service-overlay{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+  width: 70%;
+  z-index: 1;
+}
+.background-image{
+  width: 100%;
+height: 140%;
+object-fit: cover;
+position: absolute;
+top: 0;
+left: 0;
+z-index: -1;
+}
+
+.contact-container {
+  padding: 50px;
+  text-align: center;
+}
+
+.contact-container h2 {
+  font-size: 36px;
+  color: #4CAF50;
+  margin-bottom: 20px;
+}
+
+.contact-container p {
+  font-size: 18px;
+  margin-bottom: 40px;
+}
+
+.contact-form {
+  margin-bottom: 40px;
+}
+
+.contact-form form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.contact-form label {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.contact-form input,
+.contact-form textarea {
+  width: 80%;
+  padding: 10px;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.contact-form button {
+  padding: 10px 20px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.contact-form button:hover {
+  background-color: #45a049;
+}
+
+.contact-info {
+  text-align: left;
+}
+
+.contact-info h3 {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.contact-info p {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.social-icons {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.social-icons a img {
+  width: 40px;
+  height: 40px;
+}
+
+/* Modal Styles */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 3;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-content {
+  background-color: #FAD;
+  margin: 15% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 40%;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  text-align: center;
+}
+
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.modal-content h2 {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.modal-content form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.modal-content label {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.modal-content input {
+  width: 80%;
+  padding: 10px;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.modal-content button {
+  padding: 10px 20px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.modal-content button:hover {
+  background-color: #45a049;
+}
+/* Contact Us Page Styles */
+.contact-container {
+  padding: 50px;
+  text-align: center;
+  background: black; /* Add a gradient background */
+  color: white; /* Ensure text is readable on the background */
+  border-radius: 15px; /* Rounded corners for a smoother look */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Add a subtle shadow */
+}
+
+.contact-container h2 {
+  font-size: 36px;
+  color: white;
+  margin-bottom: 20px;
+}
+
+.contact-container p {
+  font-size: 18px;
+  margin-bottom: 40px;
+}
+
+/* New grid layout for contact sections */
+.contact-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+
+.contact-form, .contact-info, .map-container, .testimonials {
+  padding: 20px;
+  background-color: rgba(255, 255, 255, 0.1); /* Semi-transparent background */
+  border-radius: 10px; /* Rounded corners for sections */
+}
+
+.contact-form form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.contact-form label {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.contact-form input,
+.contact-form textarea {
+  width: 80%;
+  padding: 10px;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: rgba(255, 255, 255, 0.7); /* Semi-transparent input background */
+}
+
+.contact-form button {
+  padding: 10px 20px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.contact-form button:hover {
+  background-color: #45a049;
+}
+
+.contact-info h3 {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.contact-info p {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.social-icons {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.social-icons a img {
+  width: 40px;
+  height: 40px;
+  filter: invert(100%); /* Ensure icons are visible on dark background */
+}
+
+.map-container h3 {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.map-container iframe {
+  width: 100%;
+  max-width: 600px;
+  height: 450px;
+  border: 0;
+}
+
+.testimonials h3 {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.testimonials .testimonial {
+  background-color: rgba(255, 255, 255, 0.1); /* Semi-transparent background */
+  padding: 20px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.testimonials .testimonial h4 {
+  font-size: 18px;
+  color: #4CAF50;
+  margin-top: 10px;
+}
+/* Selection Bar Styles */
+.selection-bar {
+   position: relative; /* Changed from absolute to relative */ top: 20px; margin: 0 auto; /* Center the selection bar */ text-align: center; background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent background */ padding: 15px; border-radius: 10px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow */ width: fit-content; /* Ensure the selection bar fits its content */ }
+
+.selection-bar label {
+  font-size: 18px;
+  margin-right: 10px;
+  color: #4CAF50;
+}
+
+.selection-bar select {
+  padding: 10px;
+  font-size: 16px;
+  border-radius: 5px;
+  border: none;
+  background-color: #4CAF50;
+  color: white;
+  cursor: pointer;
+  outline: none;
+}
+
+/* Attraction Details Styles */
+.attraction-details {
+  margin-top: 50px;
+  display: grid;
+  grid-template-columns: repeat(2,1fr);
+  grid-gap: 20px;
+}
+
+.attraction-details img {
+  width: 500px;
+  height: auto;
+  border-radius: 10px;
+  transition: transform 0.5 ease;
+}
+
+.attraction-details img:hover{
+  transform: scale(1.05);
+}
+
+.attraction-details h3 {
+  font-size: 20px;
+  color: #333;
+  margin-top: 10px;
+}
+
+.attraction-details p {
+  font-size: 18px;
+  color: #666;
+}
+/* General Styles */
+.attraction img{
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+  transition: transform 0.3 ease;
+}
+.attraction:hover{
+  transform: translateY(-10px);
+
+}
+.attraction img{
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+  transition: transform 0.3 ease;
+}
+.logo-box{
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  z-index: 1;
+  background-color: rgba(255,255,255,0.8);
+  padding: 10px;
+  border-radius: 5px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+.logo-box img{
+  width: 100px;
+  height: auto;
+}
